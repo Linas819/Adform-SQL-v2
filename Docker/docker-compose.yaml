@@ -1,0 +1,17 @@
+services:
+    postgresdb:
+        image: postgres:latest
+        container_name: postgresdb
+        ports:
+        - "5432:5432"
+        environment:
+          POSTGRES_DB: AdFormSQL 
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+        volumes:
+          - ./Database_Tables.sql:/docker-entrypoint-initdb.d/Database_Tables.sql:ro
+          - ./Insert_Customers.sql:/docker-entrypoint-initdb.d/Insert_Customers.sql:ro
+          - ./Insert_Products.sql:/docker-entrypoint-initdb.d/Insert_Products.sql:ro
+          - ./Insert_Orders.sql:/docker-entrypoint-initdb.d/Insert_Orders.sql:ro
+          - ./Insert_OrderLines.sql:/docker-entrypoint-initdb.d/Insert_OrderLines.sql:ro
+          
