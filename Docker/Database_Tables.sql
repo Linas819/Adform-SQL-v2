@@ -25,6 +25,8 @@ CONSTRAINT fk_customer
         ON DELETE CASCADE -- Chosen to delete the entries if the customer entry is deleted.
 );
 
+CREATE INDEX orders_customer_id_idx on orders(customer_id); -- Creating an index on the orders.customer_id for better joining.
+
 CREATE TABLE orderlines (
 order_line_id SERIAL PRIMARY KEY,
 order_id SERIAL,
@@ -41,3 +43,6 @@ CONSTRAINT fk_product
 CONSTRAINT check_quantity_not_0
 	CHECK (product_quantity > 0) -- To ensure that there is no negative quantity.
 );
+
+CREATE INDEX orderlines_order_id_idx on orderlines(order_id);
+CREATE INDEX orderlines_product_id_idx on orderlines(product_id);
