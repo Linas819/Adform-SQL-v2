@@ -29,7 +29,7 @@ BEGIN
 	    FROM order_details 
 		where city = '' or order_details."Client city" = city
 		group by order_details."Client city"
-		order by "Order count" desc; -- to have the cities with the highes count be visible first
+		order by "Order count" desc; -- to have the cities with the highes count be visible
 	else
 		RETURN QUERY
 	    SELECT 
@@ -37,7 +37,8 @@ BEGIN
 			count(distinct order_details."Order name")::int as "Order count" 
 	    FROM order_details 
 		where city = '' or order_details."Client city" = city
-		group by order_details."Client city";
+		group by order_details."Client country", -- Incase there is a city that exists in several countries
+			order_details."Client city";
 	end if;
 END;
 $$ LANGUAGE plpgsql;

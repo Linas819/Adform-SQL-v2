@@ -1,14 +1,17 @@
 -- Creating a view as one query to get all information about the orders (Product and client details)
-create view order_details as 
-select o.order_id as "Order ID",
-	o.order_name as "Order name",
-	c.first_name as "Client first name",
-	c.last_name as "Client last name", 
-	c.details as "Client details", 
-	p.product_name as "Product name", 
-	p.product_price as "Product price", 
-	ol.product_quantity as "Product quantity" 
-from orders o 
-join orderlines ol on ol.order_id = o.order_id
-join customers c on c.customer_id = o.customer_id
-join products p on p.product_id = ol.product_id
+
+CREATE OR REPLACE VIEW public.order_details
+AS SELECT o.order_id AS "Order ID",
+    o.order_name AS "Order name",
+    c.first_name AS "Client first name",
+    c.last_name AS "Client last name",
+    c.details AS "Client details",
+    c.details ->> 'city'::text AS "Client city",
+    c.details ->> 'country'::text AS "Client country",
+    p.product_name AS "Product name",
+    p.product_price AS "Product price",
+    ol.product_quantity AS "Product quantity"
+   FROM orders o
+     JOIN orderlines ol ON ol.order_id = o.order_id
+     JOIN customers c ON c.customer_id = o.customer_id
+     JOIN products p ON p.product_id = ol.product_id;

@@ -1,5 +1,5 @@
 # AdForm-SQL-v2
-An updated version of the original AdForm-SQL task. Exercise: [Order Management SQL Exercise](https://github.com/erinev/order-management-sql-exercise)
+An updated version of the original [AdForm-SQL task](https://github.com/Linas819/AdForm-SQL-API). Exercise: [Order Management SQL Exercise](https://github.com/erinev/order-management-sql-exercise)
 
 ## Problem Statement
 
@@ -63,3 +63,17 @@ Take as long as you need on the solution, but we suggest limiting yourself to 8 
 
 The task is not made to be completed in the period of 8 hours and no one expects you to! 
 However, knowing how much time you spent and seeing the solution you came up with allows for seeing what you prioritize and where you would consider cutting corners on a sharp deadline.
+
+## Technology used
+1. PostgreSQL 17.
+2. DBeaver: a database management system.
+3. Docker.
+4. Visual Studio 2022.
+5. .NET 8.0
+6. JavaScript and [Faker](https://fakerjs.dev/) library for generating realistic mock data and SQL scripts to upload the data to PostgreSQL database.
+7. Swagger API testing tool.
+
+## Tasks and time duration
+Database set up: 1 hour.</br>
+Mock data generation and upload to database: 30 min.</br>
+View and function set up: 4 hour.</br>
