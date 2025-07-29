@@ -1,4 +1,4 @@
-CREATE FUNCTION get_order_details(order_id INT)
+CREATE FUNCTION get_order_products(order_id INT)
 RETURNS TABLE (
     "Product name" varchar(50),
     "Product price" float,

@@ -9,11 +9,11 @@ services:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: admin
         volumes:
-          - ./Database_Tables.sql:/docker-entrypoint-initdb.d/Database_Tables.sql:ro
-          - ./Insert_Customers.sql:/docker-entrypoint-initdb.d/Insert_Customers.sql:ro
-          - ./Insert_Products.sql:/docker-entrypoint-initdb.d/Insert_Products.sql:ro
-          - ./Insert_Orders.sql:/docker-entrypoint-initdb.d/Insert_Orders.sql:ro
-          - ./Insert_OrderLines.sql:/docker-entrypoint-initdb.d/Insert_OrderLines.sql:ro
-          - ./Order_Detail_View.sql:/docker-entrypoint-initdb.d/Order_Detail_View.sql:ro
-          - ./Functions.sql:/docker-entrypoint-initdb.d/Functions.sql:ro
+          - ./01_Database_Tables.sql:/docker-entrypoint-initdb.d/01_Database_Tables.sql:ro
+          - ./02_Insert_Customers.sql:/docker-entrypoint-initdb.d/02_Insert_Customers.sql:ro
+          - ./03_Insert_Products.sql:/docker-entrypoint-initdb.d/03_Insert_Products.sql:ro
+          - ./04_Insert_Orders.sql:/docker-entrypoint-initdb.d/04_Insert_Orders.sql:ro
+          - ./05_Insert_OrderLines.sql:/docker-entrypoint-initdb.d/05_Insert_OrderLines.sql:ro
+          - ./06_Order_Detail_View.sql:/docker-entrypoint-initdb.d/06_Order_Detail_View.sql:ro
+          - ./07_Functions.sql:/docker-entrypoint-initdb.d/07_Functions.sql:ro
           

@@ -1,6 +1,6 @@
 -- Creating a view as one query to get all information about the orders (Product and client details)
 
-CREATE OR REPLACE VIEW public.order_details
+CREATE VIEW public.order_details
 AS SELECT o.order_id AS "Order ID",
     o.order_name AS "Order name",
     c.first_name AS "Client first name",
