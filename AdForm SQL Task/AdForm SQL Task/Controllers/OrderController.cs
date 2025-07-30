@@ -28,9 +28,9 @@ namespace AdForm_SQL_Task.Controllers
         }
         [HttpGet]
         [Route("OrderDistributionByCity")]
-        public IActionResult GetOrderDistributionByCity(bool order, string city = "")
+        public IActionResult GetOrderDistributionByCity(bool order, string city = "", int page = 0, int pageSize = 0)
         {
-            List<OrderDistributionByCity> orderDistributions = _ordersService.GetOrderDistributionByCity(city, order);
+            List<OrderDistributionByCity> orderDistributions = _ordersService.GetOrderDistributionByCity(city, order, page, pageSize);
             if (orderDistributions.Count == 0 && city != "")
                 return NotFound("City: " + city + " not found");
             else if (orderDistributions.Count == 0)

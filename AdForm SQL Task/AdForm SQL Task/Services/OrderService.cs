@@ -1,5 +1,6 @@
 ﻿using AdForm_SQL_Task.Models;
 using AdForm_SQL_Task.Repositories;
+using System.Collections.Generic;
 
 namespace AdForm_SQL_Task.Services
 {
@@ -24,9 +25,19 @@ namespace AdForm_SQL_Task.Services
             }
             return orderInvoice;
         }
-        public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order)
+        public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order, int page, int pageSize)
         {
-            return _repository.GetOrderDistributionByCity(city, order);
+            List<OrderDistributionByCity> orderDistributions = _repository.GetOrderDistributionByCity(city, order);
+            if (page != 0)
+            {
+                int orderDistributionsCount = orderDistributions.Count;
+                int totalPages = (int)Math.Ceiling((decimal)orderDistributionsCount / pageSize);
+                orderDistributions = orderDistributions
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+            }
+            return orderDistributions;
         }
     }
 }

@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|solutionrelative:adform sql task\\services\\orderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|c:\\users\\linas\\source\\adform-sql-v2\\adform sql task\\adform sql task\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|solutionrelative:adform sql task\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|c:\\users\\linas\\source\\adform-sql-v2\\adform sql task\\adform sql task\\models\\orderdistributionbycity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|solutionrelative:adform sql task\\models\\orderdistributionbycity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|c:\\users\\linas\\source\\adform-sql-v2\\adform sql task\\adform sql task\\models\\orderinvoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16EA4703-395B-4B29-BA62-02CB905C3351}|AdForm SQL Task\\AdForm SQL Task.csproj|solutionrelative:adform sql task\\models\\orderinvoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +26,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "OrderInvoice.cs",
+              "DocumentMoniker": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Models\\OrderInvoice.cs",
+              "RelativeDocumentMoniker": "AdForm SQL Task\\Models\\OrderInvoice.cs",
+              "ToolTip": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Models\\OrderInvoice.cs",
+              "RelativeToolTip": "AdForm SQL Task\\Models\\OrderInvoice.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T13:05:27.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "OrderDistributionByCity.cs",
               "DocumentMoniker": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Models\\OrderDistributionByCity.cs",
               "RelativeDocumentMoniker": "AdForm SQL Task\\Models\\OrderDistributionByCity.cs",
               "ToolTip": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Models\\OrderDistributionByCity.cs",
               "RelativeToolTip": "AdForm SQL Task\\Models\\OrderDistributionByCity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T10:53:48.512Z",
               "EditorCaption": ""
@@ -49,7 +62,7 @@
               "RelativeDocumentMoniker": "AdForm SQL Task\\Controllers\\OrderController.cs",
               "ToolTip": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Controllers\\OrderController.cs",
               "RelativeToolTip": "AdForm SQL Task\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCQAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAApwCAAAAB6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-29T16:51:48.576Z",
               "EditorCaption": ""
@@ -62,22 +75,9 @@
               "RelativeDocumentMoniker": "AdForm SQL Task\\Services\\OrderService.cs",
               "ToolTip": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Services\\OrderService.cs",
               "RelativeToolTip": "AdForm SQL Task\\Services\\OrderService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBwAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAxwBsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-29T16:48:25.862Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Repositories\\OrderRepository.cs",
-              "RelativeDocumentMoniker": "AdForm SQL Task\\Repositories\\OrderRepository.cs",
-              "ToolTip": "C:\\Users\\Linas\\source\\AdForm-SQL-v2\\AdForm SQL Task\\AdForm SQL Task\\Repositories\\OrderRepository.cs",
-              "RelativeToolTip": "AdForm SQL Task\\Repositories\\OrderRepository.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAgwD4AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-29T15:38:43.499Z",
               "EditorCaption": ""
             }
           ]
