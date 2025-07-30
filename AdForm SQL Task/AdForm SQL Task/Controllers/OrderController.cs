@@ -1,8 +1,8 @@
-﻿using AdForm_SQL_Task.Models;
-using AdForm_SQL_Task.Services;
+﻿using Adform_SQL_Task.Models;
+using Adform_SQL_Task.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdForm_SQL_Task.Controllers
+namespace Adform_SQL_Task.Controllers
 {
     [Route("[controller]")]
     [ApiController]
@@ -14,9 +14,9 @@ namespace AdForm_SQL_Task.Controllers
             _ordersService = ordersService;
         }
         [HttpGet]
-        public IActionResult GetOrderInvoice(int orderId)
+        public IActionResult GetOrderInvoice(int orderId, int productPage = 0, int productPageSize = 0)
         {
-            OrderInvoice orderInvoice = _ordersService.GetOrderInvoice(orderId);
+            OrderInvoice orderInvoice = _ordersService.GetOrderInvoice(orderId, productPage, productPageSize);
             if (orderInvoice.OrderName == string.Empty)
                 return NotFound("Order with ID: "+orderId+" not found");
             else if (orderInvoice.OrderProducts.Count == 0)

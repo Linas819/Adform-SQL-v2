@@ -1,7 +1,7 @@
-﻿using AdForm_SQL_Task.Models;
+﻿using Adform_SQL_Task.Models;
 using Npgsql;
 
-namespace AdForm_SQL_Task.Repositories
+namespace Adform_SQL_Task.Repositories
 {
     public class OrderRepository
     {

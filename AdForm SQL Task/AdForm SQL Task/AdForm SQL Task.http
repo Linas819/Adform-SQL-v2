@@ -1,6 +1,0 @@
-@AdForm_SQL_Task_HostAddress = http://localhost:5221
-
-GET {{AdForm_SQL_Task_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

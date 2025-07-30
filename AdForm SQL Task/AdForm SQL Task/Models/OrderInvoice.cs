@@ -1,4 +1,4 @@
-﻿namespace AdForm_SQL_Task.Models
+﻿namespace Adform_SQL_Task.Models
 {
     public class OrderInvoice
     {

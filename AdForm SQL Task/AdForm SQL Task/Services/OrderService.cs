@@ -1,8 +1,7 @@
-﻿using AdForm_SQL_Task.Models;
-using AdForm_SQL_Task.Repositories;
-using System.Collections.Generic;
+﻿using Adform_SQL_Task.Models;
+using Adform_SQL_Task.Repositories;
 
-namespace AdForm_SQL_Task.Services
+namespace Adform_SQL_Task.Services
 {
     public class OrderService
     {
@@ -11,24 +10,33 @@ namespace AdForm_SQL_Task.Services
         {
             _repository = ordersRepository;
         }
-        public OrderInvoice GetOrderInvoice(int orderId)
+        public OrderInvoice GetOrderInvoice(int orderId, int productPage, int productPageSize)
         { 
             OrderInvoice orderInvoice = new OrderInvoice();
             orderInvoice.OrderId = Convert.ToInt32(orderId);
             orderInvoice.OrderName = _repository.GetOrderName(orderId);
-            if (orderInvoice.OrderName == string.Empty)
+            if (orderInvoice.OrderName == string.Empty) // If ordername is not found, that means that no order exists
                 return orderInvoice;
             orderInvoice.OrderProducts = _repository.GetOrderProducts(orderId);
             foreach (OrderProduct product in orderInvoice.OrderProducts)
             {
                 orderInvoice.TotalPrice += product.ProductPrice * product.ProductQautntiy;
             }
+            if (productPage != 0 && orderInvoice.OrderProducts.Count > 0)
+            {
+                int orderProductsCount = orderInvoice.OrderProducts.Count;
+                int totalPages = (int)Math.Ceiling((decimal)orderProductsCount / productPageSize);
+                orderInvoice.OrderProducts = orderInvoice.OrderProducts
+                    .Skip((productPage-1) *productPageSize)
+                    .Take(productPageSize)
+                    .ToList();
+            }
             return orderInvoice;
         }
         public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order, int page, int pageSize)
         {
             List<OrderDistributionByCity> orderDistributions = _repository.GetOrderDistributionByCity(city, order);
-            if (page != 0)
+            if (page != 0 && orderDistributions.Count > 0)
             {
                 int orderDistributionsCount = orderDistributions.Count;
                 int totalPages = (int)Math.Ceiling((decimal)orderDistributionsCount / pageSize);

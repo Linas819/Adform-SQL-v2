@@ -1,5 +1,5 @@
-using AdForm_SQL_Task.Repositories;
-using AdForm_SQL_Task.Services;
+using Adform_SQL_Task.Repositories;
+using Adform_SQL_Task.Services;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
