@@ -77,3 +77,4 @@ However, knowing how much time you spent and seeing the solution you came up wit
 Database set up: 1 hour.</br>
 Mock data generation and upload to database: 30 min.</br>
 View and function set up: 4 hour.</br>
+API project set up and implementation: 3 hours</br>

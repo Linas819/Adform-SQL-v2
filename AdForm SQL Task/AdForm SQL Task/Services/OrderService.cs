@@ -22,7 +22,7 @@ namespace Adform_SQL_Task.Services
             {
                 orderInvoice.TotalPrice += product.ProductPrice * product.ProductQautntiy;
             }
-            if (productPage != 0 && orderInvoice.OrderProducts.Count > 0)
+            if (productPage != 0 && orderInvoice.OrderProducts.Count > 0 && productPageSize > 0)
             {
                 int orderProductsCount = orderInvoice.OrderProducts.Count;
                 int totalPages = (int)Math.Ceiling((decimal)orderProductsCount / productPageSize);
@@ -36,7 +36,7 @@ namespace Adform_SQL_Task.Services
         public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order, int page, int pageSize)
         {
             List<OrderDistributionByCity> orderDistributions = _repository.GetOrderDistributionByCity(city, order);
-            if (page != 0 && orderDistributions.Count > 0)
+            if (page != 0 && orderDistributions.Count > 0 && pageSize > 0)
             {
                 int orderDistributionsCount = orderDistributions.Count;
                 int totalPages = (int)Math.Ceiling((decimal)orderDistributionsCount / pageSize);

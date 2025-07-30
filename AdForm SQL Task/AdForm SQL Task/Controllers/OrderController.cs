@@ -1,6 +1,7 @@
 ﻿using Adform_SQL_Task.Models;
 using Adform_SQL_Task.Services;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace Adform_SQL_Task.Controllers
 {
@@ -18,9 +19,17 @@ namespace Adform_SQL_Task.Controllers
         {
             OrderInvoice orderInvoice = _ordersService.GetOrderInvoice(orderId, productPage, productPageSize);
             if (orderInvoice.OrderName == string.Empty)
-                return NotFound("Order with ID: "+orderId+" not found");
-            else if (orderInvoice.OrderProducts.Count == 0)
-                return NotFound("Order with ID: " + orderId + " has no products");
+            {
+                string message = "Order with ID: " + orderId + " not found";
+                Log.Information(message);
+                return NotFound(message);
+            }
+            if (orderInvoice.OrderProducts.Count == 0)
+            {
+                string message = "Order with ID: " + orderId + " has no products";
+                Log.Information(message);
+                return NotFound(message);
+            }
             return (Ok(new
             {
                 OrderInvoice = orderInvoice
@@ -32,9 +41,17 @@ namespace Adform_SQL_Task.Controllers
         {
             List<OrderDistributionByCity> orderDistributions = _ordersService.GetOrderDistributionByCity(city, order, page, pageSize);
             if (orderDistributions.Count == 0 && city != "")
+            {
+                string message = "City: " + city + " not found";
+                Log.Information(message);
                 return NotFound("City: " + city + " not found");
-            else if (orderDistributions.Count == 0)
-                return NotFound("No city resident has made an order");
+            }
+            if (orderDistributions.Count == 0)
+            {
+                string message = "No city resident has made an order";
+                Log.Information(message);
+                return NotFound(message);
+            }
             return (Ok(new
             {
                 OrderDistributions = orderDistributions

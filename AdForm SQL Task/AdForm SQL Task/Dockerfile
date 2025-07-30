@@ -12,19 +12,19 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["AdForm SQL Task/AdForm SQL Task.csproj", "AdForm SQL Task/"]
-RUN dotnet restore "./AdForm SQL Task/AdForm SQL Task.csproj"
+COPY ["Adform SQL Task/Adform SQL Task.csproj", "Adform SQL Task/"]
+RUN dotnet restore "./Adform SQL Task/Adform SQL Task.csproj"
 COPY . .
-WORKDIR "/src/AdForm SQL Task"
-RUN dotnet build "./AdForm SQL Task.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Adform SQL Task"
+RUN dotnet build "./Adform SQL Task.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./AdForm SQL Task.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Adform SQL Task.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AdForm SQL Task.dll"]
+ENTRYPOINT ["dotnet", "Adform SQL Task.dll"]
