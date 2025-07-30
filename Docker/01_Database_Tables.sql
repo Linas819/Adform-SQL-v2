@@ -17,7 +17,7 @@ product_price FLOAT
 
 CREATE TABLE  orders (
 order_id SERIAL PRIMARY KEY,
-order_name VARCHAR(50) NOT NULL,
+order_name VARCHAR(50) UNIQUE NOT NULL,
 customer_id SERIAL,
 CONSTRAINT fk_customer
       FOREIGN KEY(customer_id)

@@ -24,8 +24,9 @@ namespace AdForm_SQL_Task.Services
             }
             return orderInvoice;
         }
-        public void GetOrderDistribution(string city, bool order)
-        { 
+        public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order)
+        {
+            return _repository.GetOrderDistributionByCity(city, order);
         }
     }
 }

@@ -30,7 +30,8 @@ BEGIN
 			count(distinct order_details_view."Order name")::int as "Order count" 
 	    FROM order_details_view 
 		where city = '' or order_details_view."Client city" = city
-		group by order_details_view."Client city"
+		group by order_details_view."Client country", -- Incase there is a city that exists in several countries
+			order_details_view."Client city"
 		order by "Order count" desc; -- to have the cities with the highes count be visible
 	else
 		RETURN QUERY

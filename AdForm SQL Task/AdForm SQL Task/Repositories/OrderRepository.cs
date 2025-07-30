@@ -60,5 +60,31 @@ namespace AdForm_SQL_Task.Repositories
             }
             return orderProducts;
         }
+        public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order)
+        {
+            List<OrderDistributionByCity> orderDistributions = new List<OrderDistributionByCity>();
+            string query = "SELECT * FROM get_orders_by_city('" + city + "', " + order + ")";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connString))
+            {
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = connection;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = query;
+                    connection.Open();
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        orderDistributions.Add(new OrderDistributionByCity() 
+                        {
+                            City = reader["City"].ToString(),
+                            OrderCount = Convert.ToInt32(reader["Order count"].ToString())
+                        });
+                    }
+                }
+            }
+            return orderDistributions;
+        }
     }
 }
