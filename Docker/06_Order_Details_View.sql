@@ -1,6 +1,6 @@
 -- Creating a view as one query to get all information about the orders (Product and client details)
 
-CREATE VIEW public.order_details_view
+CREATE VIEW public.order_details
 AS SELECT o.order_id AS "Order ID",
     o.order_name AS "Order name",
     c.first_name AS "Client first name",
@@ -9,7 +9,6 @@ AS SELECT o.order_id AS "Order ID",
     c.details ->> 'city'::text AS "Client city",
     c.details ->> 'country'::text AS "Client country",
     p.product_name AS "Product name",
-    p.product_category AS "Product category",
     p.product_price AS "Product price",
     ol.product_quantity AS "Product quantity"
    FROM orders o

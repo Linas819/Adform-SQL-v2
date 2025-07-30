@@ -14,6 +14,6 @@ services:
           - ./03_Insert_Products.sql:/docker-entrypoint-initdb.d/03_Insert_Products.sql:ro
           - ./04_Insert_Orders.sql:/docker-entrypoint-initdb.d/04_Insert_Orders.sql:ro
           - ./05_Insert_OrderLines.sql:/docker-entrypoint-initdb.d/05_Insert_OrderLines.sql:ro
-          - ./06_Order_Detail_View.sql:/docker-entrypoint-initdb.d/06_Order_Detail_View.sql:ro
+          - ./06_Order_Details_View.sql:/docker-entrypoint-initdb.d/06_Order_Details_View.sql:ro
           - ./07_Functions.sql:/docker-entrypoint-initdb.d/07_Functions.sql:ro
           

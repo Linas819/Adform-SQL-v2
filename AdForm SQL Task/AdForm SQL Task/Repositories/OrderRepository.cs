@@ -51,6 +51,7 @@ namespace AdForm_SQL_Task.Repositories
                         orderProducts.Add(new OrderProduct()
                         {
                             ProductName = reader["Product name"].ToString(),
+                            ProductCategory = reader["Product category"].ToString(),
                             ProductPrice = float.Parse(reader["Product price"].ToString()),
                             ProductQautntiy = Convert.ToInt32(reader["Product quantity"])
                         });
