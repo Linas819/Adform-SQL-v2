@@ -18,7 +18,7 @@ services:
           - ./07_Functions.sql:/docker-entrypoint-initdb.d/07_Functions.sql:ro
     webapi:
       build:
-        context: ../Adform SQL Task
+        context: ../
         dockerfile: Dockerfile
       container_name: webapi
       ports:

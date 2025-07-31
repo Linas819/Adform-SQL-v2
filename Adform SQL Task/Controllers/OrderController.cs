@@ -15,7 +15,7 @@ namespace Adform_SQL_Task.Controllers
             _ordersService = ordersService;
         }
         /// <summary>
-        /// Get the invoice details for a speciic order. Can return product list by pages if they have been set.
+        /// Get the invoice details for a specific order. Can return product list by pages if they have been set.
         /// </summary>
         /// <remarks>
         /// Sample request:
