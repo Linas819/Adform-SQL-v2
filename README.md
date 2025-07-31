@@ -1,6 +1,10 @@
 # AdForm-SQL-v2
 An updated version of the original [AdForm-SQL task](https://github.com/Linas819/AdForm-SQL-API). Exercise: [Order Management SQL Exercise](https://github.com/erinev/order-management-sql-exercise)
 
+## How to launch
+1. Navigate to the "Docker" in this repository in your docker terminal.
+2. Once in the folder run ``` docker compose up ```.
+
 ## Problem Statement
 
 A retailer company is looking to develop an order management system to streamline their order processing and products management.
@@ -71,9 +75,11 @@ However, knowing how much time you spent and seeing the solution you came up wit
 5. .NET 8.0
 6. JavaScript and [Faker](https://fakerjs.dev/) library for generating realistic mock data and SQL scripts to upload the data to PostgreSQL database.
 7. Swagger API testing tool.
+8. Serilog.
 
 ## Tasks and time duration
 Database set up: 1 hour.</br>
 Mock data generation and upload to database: 30 min.</br>
-View and function set up: 4 hour.</br>
-API project set up and implementation: 3 hours</br>
+View, function set up and testing: 4 hour.</br>
+API project set up and implementation: 4 hours</br>
+Docker integration and testing : 2 hours.
