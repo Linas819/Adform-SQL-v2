@@ -3,7 +3,7 @@ An updated version of the original [AdForm-SQL task](https://github.com/Linas819
 
 ## How to launch
 1. In your docker terminal, navigate to the "Docker" folder in this repository.
-2. Once in the directory, run ``` docker compose up ``` command.
+2. Once in the directory, run ``` docker compose up ``` command.</br>
 **Note**: Data upload may take a while.
 
 ## Problem Statement
