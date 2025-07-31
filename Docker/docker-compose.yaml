@@ -16,4 +16,15 @@ services:
           - ./05_Insert_OrderLines.sql:/docker-entrypoint-initdb.d/05_Insert_OrderLines.sql:ro
           - ./06_Order_Details_View.sql:/docker-entrypoint-initdb.d/06_Order_Details_View.sql:ro
           - ./07_Functions.sql:/docker-entrypoint-initdb.d/07_Functions.sql:ro
-          
+    webapi:
+      build:
+        context: ../Adform SQL Task
+        dockerfile: Dockerfile
+      container_name: webapi
+      ports:
+        - "8080:8080"
+        - "8081:8081"
+      depends_on:
+        - postgresdb
+      environment:
+        - ASPNETCORE_ENVIRONMENT=Development
