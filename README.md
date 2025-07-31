@@ -2,8 +2,9 @@
 An updated version of the original [AdForm-SQL task](https://github.com/Linas819/AdForm-SQL-API). Exercise: [Order Management SQL Exercise](https://github.com/erinev/order-management-sql-exercise)
 
 ## How to launch
-1. Navigate to the "Docker" in this repository in your docker terminal.
-2. Once in the folder run ``` docker compose up ```.
+1. In your docker terminal, navigate to the "Docker" folder in this repository.
+2. Once in the directory, run ``` docker compose up ``` command.
+**Note**: Data upload may take a while.
 
 ## Problem Statement
 
