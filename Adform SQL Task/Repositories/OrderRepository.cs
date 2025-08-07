@@ -13,7 +13,7 @@ namespace Adform_SQL_Task.Repositories
         public string GetOrderName(int orderId)
         {
             string name = "";
-            string query = "SELECT order_name FROM orders WHERE order_id = " + orderId + ";";
+            string query = "SELECT order_name FROM orders WHERE order_id = @orderId";
             using (NpgsqlConnection connection = new NpgsqlConnection(connString))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
@@ -22,6 +22,7 @@ namespace Adform_SQL_Task.Repositories
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Parameters.Clear();
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@orderId", orderId);
                     connection.Open();
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -35,7 +36,7 @@ namespace Adform_SQL_Task.Repositories
         public List<OrderProduct> GetOrderProducts(int orderId)
         {
             List<OrderProduct> orderProducts = new List<OrderProduct>();
-            string query = "SELECT * FROM get_order_products("+orderId+")";
+            string query = "SELECT * FROM get_order_products(@orderId)";
             using (NpgsqlConnection connection = new NpgsqlConnection(connString))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
@@ -44,6 +45,7 @@ namespace Adform_SQL_Task.Repositories
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Parameters.Clear();
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@orderId", orderId);
                     connection.Open();
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -63,7 +65,7 @@ namespace Adform_SQL_Task.Repositories
         public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order)
         {
             List<OrderDistributionByCity> orderDistributions = new List<OrderDistributionByCity>();
-            string query = "SELECT * FROM get_orders_by_city('" + city + "', " + order + ")";
+            string query = "SELECT * FROM get_orders_by_city(@city, @order)";
             using (NpgsqlConnection connection = new NpgsqlConnection(connString))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
@@ -72,6 +74,8 @@ namespace Adform_SQL_Task.Repositories
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Parameters.Clear();
                     cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@city", city);
+                    cmd.Parameters.AddWithValue("@order", order);
                     connection.Open();
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
