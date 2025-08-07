@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Adform SQL Task/Adform SQL Task.csproj", "Adform SQL Task/"]
-RUN dotnet restore "./Adform SQL Task/Adform SQL Task.csproj"
+COPY ["Adform SQL Task.csproj", "."]
+RUN dotnet restore "./Adform SQL Task.csproj"
 COPY . .
-WORKDIR "/src/Adform SQL Task"
+WORKDIR "/src/."
 RUN dotnet build "./Adform SQL Task.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
