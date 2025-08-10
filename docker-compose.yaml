@@ -10,12 +10,10 @@ services:
           POSTGRES_PASSWORD: admin
         volumes:
           - ./Sql Scripts/01_Database_Tables.sql:/docker-entrypoint-initdb.d/01_Database_Tables.sql:ro
-          - ./Sql Scripts/02_Insert_Customers.sql:/docker-entrypoint-initdb.d/02_Insert_Customers.sql:ro
-          - ./Sql Scripts/03_Insert_Products.sql:/docker-entrypoint-initdb.d/03_Insert_Products.sql:ro
-          - ./Sql Scripts/04_Insert_Orders.sql:/docker-entrypoint-initdb.d/04_Insert_Orders.sql:ro
-          - ./Sql Scripts/05_Insert_OrderLines.sql:/docker-entrypoint-initdb.d/05_Insert_OrderLines.sql:ro
-          - ./Sql Scripts/06_Order_Details_View.sql:/docker-entrypoint-initdb.d/06_Order_Details_View.sql:ro
-          - ./Sql Scripts/07_Functions.sql:/docker-entrypoint-initdb.d/07_Functions.sql:ro
+          - ./Sql Scripts/02_Generate_Data_Functions.sql:/docker-entrypoint-initdb.d/02_Generate_Data_Functions.sql:ro
+          - ./Sql Scripts/03_Generate_Data_Queries.sql:/docker-entrypoint-initdb.d/03_Generate_Data_Queries.sql:ro
+          - ./Sql Scripts/04_Insert_O04_Order_Details_Viewrders.sql:/docker-entrypoint-initdb.d/04_Order_Details_View.sql:ro
+          - ./Sql Scripts/05_Get_Data_Functions.sql:/docker-entrypoint-initdb.d/05_Get_Data_Functions.sql:ro
     webapi:
       build:
         context: ./Adform SQL Task
