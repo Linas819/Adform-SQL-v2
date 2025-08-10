@@ -27,7 +27,7 @@ CONSTRAINT fk_customer
 
 CREATE INDEX orders_customer_id_idx on orders(customer_id); -- Creating an index on the orders.customer_id for better joining.
 
-CREATE TABLE orderlines (
+CREATE TABLE order_lines (
 order_line_id SERIAL PRIMARY KEY,
 order_id SERIAL,
 product_id SERIAL,
@@ -44,5 +44,5 @@ CONSTRAINT check_quantity_not_0
 	CHECK (product_quantity > 0) -- To ensure that there is no negative quantity.
 );
 
-CREATE INDEX orderlines_order_id_idx on orderlines(order_id);
-CREATE INDEX orderlines_product_id_idx on orderlines(product_id);
+CREATE INDEX order_lines_order_id_idx on order_lines(order_id);
+CREATE INDEX order_lines_product_id_idx on order_lines(product_id);

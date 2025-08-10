@@ -13,6 +13,6 @@ AS SELECT o.order_id AS "Order ID",
     p.product_category AS "Product category",
     ol.product_quantity AS "Product quantity"
    FROM orders o
-     JOIN orderlines ol ON ol.order_id = o.order_id
+     JOIN order_lines ol ON ol.order_id = o.order_id
      JOIN customers c ON c.customer_id = o.customer_id
      JOIN products p ON p.product_id = ol.product_id;

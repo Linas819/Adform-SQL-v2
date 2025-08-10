@@ -12,7 +12,7 @@ services:
           - ./Sql Scripts/01_Database_Tables.sql:/docker-entrypoint-initdb.d/01_Database_Tables.sql:ro
           - ./Sql Scripts/02_Generate_Data_Functions.sql:/docker-entrypoint-initdb.d/02_Generate_Data_Functions.sql:ro
           - ./Sql Scripts/03_Generate_Data_Queries.sql:/docker-entrypoint-initdb.d/03_Generate_Data_Queries.sql:ro
-          - ./Sql Scripts/04_Insert_O04_Order_Details_Viewrders.sql:/docker-entrypoint-initdb.d/04_Order_Details_View.sql:ro
+          - ./Sql Scripts/04_Order_Details_View.sql:/docker-entrypoint-initdb.d/04_Order_Details_View.sql:ro
           - ./Sql Scripts/05_Get_Data_Functions.sql:/docker-entrypoint-initdb.d/05_Get_Data_Functions.sql:ro
     webapi:
       build:
@@ -26,3 +26,11 @@ services:
         - postgresdb
       environment:
         - ASPNETCORE_ENVIRONMENT=Development
+    cloudbeaver:
+        image: dbeaver/cloudbeaver:latest
+        container_name: cloudbeaver
+        ports:
+            - "8978:8978"
+        depends_on:
+            - postgresdb
+        restart: unless-stopped
