@@ -10,7 +10,7 @@ namespace Adform_SQL_Task.Services
         {
             _repository = ordersRepository;
         }
-        public OrderInvoice GetOrderInvoice(int orderId, int productPage, int productPageSize)
+        public OrderInvoice GetOrderInvoice(int orderId)
         { 
             OrderInvoice orderInvoice = new OrderInvoice();
             orderInvoice.OrderId = Convert.ToInt32(orderId);
@@ -18,33 +18,12 @@ namespace Adform_SQL_Task.Services
             if (orderInvoice.OrderName == string.Empty) // If ordername is not found, that means that no order exists
                 return orderInvoice;
             orderInvoice.OrderProducts = _repository.GetOrderProducts(orderId);
-            foreach (OrderProduct product in orderInvoice.OrderProducts)
-            {
-                orderInvoice.TotalPrice += product.ProductPrice * product.ProductQautntiy;
-            }
-            if (productPage != 0 && orderInvoice.OrderProducts.Count > 0 && productPageSize > 0)
-            {
-                int orderProductsCount = orderInvoice.OrderProducts.Count;
-                int totalPages = (int)Math.Ceiling((decimal)orderProductsCount / productPageSize);
-                orderInvoice.OrderProducts = orderInvoice.OrderProducts
-                    .Skip((productPage-1) *productPageSize)
-                    .Take(productPageSize)
-                    .ToList();
-            }
+            orderInvoice.TotalPrice = _repository.GetOrderTotalPrice(orderId);
             return orderInvoice;
         }
         public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order, int page, int pageSize)
         {
-            List<OrderDistributionByCity> orderDistributions = _repository.GetOrderDistributionByCity(city, order);
-            if (page != 0 && orderDistributions.Count > 0 && pageSize > 0)
-            {
-                int orderDistributionsCount = orderDistributions.Count;
-                int totalPages = (int)Math.Ceiling((decimal)orderDistributionsCount / pageSize);
-                orderDistributions = orderDistributions
-                    .Skip((page - 1) * pageSize)
-                    .Take(pageSize)
-                    .ToList();
-            }
+            List<OrderDistributionByCity> orderDistributions = _repository.GetOrderDistributionByCity(city, order, page, pageSize);
             return orderDistributions;
         }
     }

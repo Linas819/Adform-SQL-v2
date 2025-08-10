@@ -24,32 +24,14 @@ namespace Adform_SQL_Task.Controllers
         ///     {
         ///         "orderId": "11001"
         ///     }
-        ///     
-        /// Sample request with pagination:
-        /// 
-        ///     GET /order
-        ///     {
-        ///         "orderId": "11001",
-        ///         "productPage": 1
-        ///         "productPageSize": 10
-        ///     }
         /// </remarks>
         /// <param name="orderId"></param>
-        /// <param name="productPage"></param>
-        /// <param name="productPageSize"></param>
         /// <response code="404">Order with the Id not found / Order has no products</response>
-        /// <response code="400">Page size and selected page cannot be lower than 0</response>
         /// <returns>Order name, list of products, total price of the order</returns>
         [HttpGet]
-        public IActionResult GetOrderInvoice(int orderId, int productPage = 0, int productPageSize = 0)
+        public IActionResult GetOrderInvoice(int orderId)
         {
-            if (productPage < 0 || productPageSize < 0)
-            {
-                string message = "Page size and selected page cannot be lower than 0";
-                Log.Error(message);
-                return BadRequest(message);
-            }
-            OrderInvoice orderInvoice = _ordersService.GetOrderInvoice(orderId, productPage, productPageSize);
+            OrderInvoice orderInvoice = _ordersService.GetOrderInvoice(orderId);
             if (orderInvoice.OrderName == string.Empty)
             {
                 string message = "Order with ID: " + orderId + " not found";
@@ -76,7 +58,7 @@ namespace Adform_SQL_Task.Controllers
         ///     GET /Order/OrderDistributionByCity
         ///     {
         ///         "order": false,
-        ///         "city": "West Nelson"
+        ///         "city": "West Jalon"
         ///     }
         /// Sample request (all cities, ordered with pagination):
         /// 
@@ -102,6 +84,12 @@ namespace Adform_SQL_Task.Controllers
             if (page < 0 || pageSize < 0)
             {
                 string message = "Page size and selected page cannot be lower than 0";
+                Log.Error(message);
+                return BadRequest(message);
+            }
+            if ((page == 0 && pageSize != 0) || (page != 0 && pageSize == 0))
+            {
+                string message = "Both page and page size must be positive values";
                 Log.Error(message);
                 return BadRequest(message);
             }

@@ -13,7 +13,7 @@ namespace Adform_SQL_Task.Repositories
         public string GetOrderName(int orderId)
         {
             string name = "";
-            string query = "SELECT order_name FROM orders WHERE order_id = @orderId";
+            string query = "SELECT * FROM get_order_invoice_order_name(@orderId)";
             using (NpgsqlConnection connection = new NpgsqlConnection(connString))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
@@ -27,7 +27,7 @@ namespace Adform_SQL_Task.Repositories
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        name = reader.GetString(0);
+                        name = reader.IsDBNull(0) ? "" : reader.GetString(0);
                     }
                 }
             }
@@ -36,7 +36,7 @@ namespace Adform_SQL_Task.Repositories
         public List<OrderProduct> GetOrderProducts(int orderId)
         {
             List<OrderProduct> orderProducts = new List<OrderProduct>();
-            string query = "SELECT * FROM get_order_products(@orderId)";
+            string query = "SELECT * FROM get_order_invoice_products(@orderId)";
             using (NpgsqlConnection connection = new NpgsqlConnection(connString))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
@@ -62,10 +62,33 @@ namespace Adform_SQL_Task.Repositories
             }
             return orderProducts;
         }
-        public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order)
+        public double GetOrderTotalPrice(int orderId)
+        {
+            double totalPrice = 0;
+            string query = "SELECT * FROM get_order_invoice_total_price(@orderId)";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connString))
+            {
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = connection;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.Clear();
+                    cmd.CommandText = query;
+                    cmd.Parameters.AddWithValue("@orderId", orderId);
+                    connection.Open();
+                    NpgsqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        totalPrice = Convert.ToDouble(reader[0]);
+                    }
+                }
+            }
+            return totalPrice;
+        }
+        public List<OrderDistributionByCity> GetOrderDistributionByCity(string city, bool order, int page, int pageSize)
         {
             List<OrderDistributionByCity> orderDistributions = new List<OrderDistributionByCity>();
-            string query = "SELECT * FROM get_orders_by_city(@city, @order)";
+            string query = "SELECT * FROM get_orders_by_city(@city, @order, @listPage, @listPageSize)";
             using (NpgsqlConnection connection = new NpgsqlConnection(connString))
             {
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
@@ -76,6 +99,8 @@ namespace Adform_SQL_Task.Repositories
                     cmd.CommandText = query;
                     cmd.Parameters.AddWithValue("@city", city);
                     cmd.Parameters.AddWithValue("@order", order);
+                    cmd.Parameters.AddWithValue("@listPage", page == 0 ? DBNull.Value : page);
+                    cmd.Parameters.AddWithValue("@listpagesize", pageSize == 0 ? DBNull.Value : pageSize);
                     connection.Open();
                     NpgsqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -83,6 +108,7 @@ namespace Adform_SQL_Task.Repositories
                         orderDistributions.Add(new OrderDistributionByCity() 
                         {
                             City = reader["City"].ToString(),
+                            Country = reader["Country"].ToString(),
                             OrderCount = Convert.ToInt32(reader["Order count"].ToString())
                         });
                     }

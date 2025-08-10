@@ -44,6 +44,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE FUNCTION get_orders_by_city(city varchar(50), orderBy boolean, listPage int, listPageSize int)
 RETURNS TABLE (
+	"Country" varchar(50),
     "City" varchar(50),
     "Order count"  int
 ) AS $$
@@ -51,6 +52,7 @@ BEGIN
 	if orderBy then -- If the user need it orderd by order count
 	    RETURN QUERY
 	    SELECT 
+			order_details_view."Client country"::varchar(50) as "Country",
 			order_details_view."Client city"::varchar(50) as "City",
 			count(distinct order_details_view."Order name")::int as "Order count" 
 	    FROM order_details_view 
@@ -63,6 +65,7 @@ BEGIN
 	else
 		RETURN QUERY
 	    SELECT 
+			order_details_view."Client country"::varchar(50) as "Country",
 			order_details_view."Client city"::varchar(50) as "City",
 			count(distinct order_details_view."Order name")::int as "Order count" 
 	    FROM order_details_view 
