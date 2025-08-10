@@ -5,7 +5,7 @@ services:
         ports:
         - "5432:5432"
         environment:
-          POSTGRES_DB: AdFormSQL 
+          POSTGRES_DB: Adform 
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: admin
         volumes:
@@ -21,7 +21,6 @@ services:
       container_name: webapi
       ports:
         - "8080:8080"
-        - "8081:8081"
       depends_on:
         - postgresdb
       environment:

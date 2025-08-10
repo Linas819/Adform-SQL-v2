@@ -1,11 +1,31 @@
 # AdForm-SQL-v2
 An updated version of the original [AdForm-SQL task](https://github.com/Linas819/AdForm-SQL-API). Exercise: [Order Management SQL Exercise](https://github.com/erinev/order-management-sql-exercise)
 
-## How to launch
-1. In your docker terminal, navigate to the "Docker" folder in this repository.
-2. Once in the directory, run ``` docker compose up ``` command.
-3. Open ``` https://localhost:8080/swagger/index.html ``` </br>
-**Note**: Data upload may take a while.
+## Instructions
+1. In your docker terminal, navigate to the reposetory's folder (where docker compose.yaml file is located).
+2. Run ``` docker compose up ``` command.</br>
+**Note**: container initialization may take a while.
+3. to test out the optional API, open ``` https://localhost:8080/swagger/index.html ```
+4. To test using a CloudBeaver database manager open up ``` https://localhost:8978 ```
+### Connect to Postgres in CloudBeaver
+1. Set up the main server configuration using your made up credentials and click *NEXT*:</br>
+![Server configuration](<Information screenshots/CloudBeaver initial server configuration.png>)
+2. Once the configuration is complete (after clicking the *FINISH* button), log in with the credentials you created:</br>
+![Authentication](<Information screenshots/CloudBeaver authentication.png>)
+3. When logged in, navigate to the CloudBeaver's app by clicking on it's icon in the top left corner and start a connection, by clicking the **New Connection** button on the sidebar or **CloudBeaver Community** page:</br>
+![CloudBeaver app](<Information screenshots/CloudBeaver app.png>)
+4. Select *PostgreSQL* as your **New Connection**:</br>
+![New connection](<Information screenshots/New connection.png>)
+5. Put the credentials as configured in the docker-compose.yaml file:
+**Host**: postgresdb</br>
+**Posrt**: 5432</br>
+**Database**: Adform</br>
+**User name**: postgres</br>
+**User password**: admin</br>
+![Connection configuration](<Information screenshots/Connection configuration.png>)</br>
+You can click **TEST** or **CREATE** to connect to the database.
+5. Once the connection has been established, you can see it on the left sidebar:</br>
+![Connection side bar](<Information screenshots/Connection done.png>)
 
 ## Problem Statement
 
