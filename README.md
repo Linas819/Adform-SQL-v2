@@ -25,7 +25,9 @@ An updated version of the original [AdForm-SQL task](https://github.com/Linas819
 ![Connection configuration](<Information screenshots/Connection configuration.png>)</br>
 You can click **TEST** or **CREATE** to connect to the database.
 5. Once the connection has been established, you can see it on the left sidebar:</br>
-![Connection side bar](<Information screenshots/Connection done.png>)
+![Connection side bar](<Information screenshots/Connection done.png>)</br>
+
+**NOTE** Test queries can be found in SQL Scripts -> Get Data Queries.sql file.
 
 ## Problem Statement
 
