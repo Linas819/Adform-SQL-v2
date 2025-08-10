@@ -27,8 +27,8 @@ You can click **TEST** or **CREATE** to connect to the database.
 5. Once the connection has been established, you can see it on the left sidebar:</br>
 ![Connection side bar](<Information screenshots/Connection done.png>)</br>
 
-**NOTE** Test queries can be found in SQL Scripts -> Get Data Queries.sql file.</br>
-**IMPORTANT** Data is being randmly generated. Some placeholder names, might not be valid.
+**NOTE**: Test queries can be found in SQL Scripts -> Get Data Queries.sql file.</br>
+**IMPORTANT**: Data is being randomly generated. Some placeholder names, might not be valid.
 
 ## Problem Statement
 
